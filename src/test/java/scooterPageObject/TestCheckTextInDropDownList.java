@@ -1,6 +1,6 @@
-package scooterPageObject;
+package scooterpageobject;
 
-import PageObject.HomePageScooter;
+import pageobject.HomePageScooter;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
@@ -18,6 +18,7 @@ import static org.hamcrest.CoreMatchers.containsString;
         private final String locatorButton;
         private final String locatorActualText;
         private final String name;
+        private final String URL = "https://qa-scooter.praktikum-services.ru";
         private WebDriver driver;
 
     public TestCheckTextInDropDownList(String name, String locatorButton, String expectedText,
@@ -47,19 +48,19 @@ import static org.hamcrest.CoreMatchers.containsString;
         //драйвер для браузера Chrome
         driver = new ChromeDriver();
         //переход на страницу тестового приложения
-        driver.get("https://qa-scooter.praktikum-services.ru");
+        driver.get(URL);
     }
 
     @Test
-    public void CheckTextInDropDownList(){
+    public void checkTextInDropDownList(){
         // создание объекта класса домашней страницы
         HomePageScooter objHomePageScooter = new HomePageScooter(driver);
 
         //Перейти к блоку "Вопросы о важном"
         objHomePageScooter.turnToQuestionsAboutImportant();
 
-        //Закрыть сообщение о куках
-        objHomePageScooter.clickAcceptCookie();
+        //проверка отображения и закрытие сообщения о использовании кук
+        objHomePageScooter.closeCookieMessage();
 
         // нажать на стрелку "Сколько это стоит? И как оплатить?"
         objHomePageScooter.clickOnDropDownList(locatorButton);

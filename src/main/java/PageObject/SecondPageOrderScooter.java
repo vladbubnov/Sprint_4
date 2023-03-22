@@ -1,4 +1,4 @@
-package PageObject;
+package pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -40,7 +40,7 @@ public class SecondPageOrderScooter {
         this.driver = driver;
     }
 
-    //метод выбора значения в поле "Станция метро"
+    //метод выбора значения в поле "Дата доставки"
     public void setInputDateDelivery() {
         driver.findElement(inputDateDelivery).click();
         driver.findElement(dateDelivery).click();
@@ -75,7 +75,7 @@ public class SecondPageOrderScooter {
         driver.findElement(buttonConfirmOrderYes).click();
     }
     //метод проверки, что кнопка "Проверить статус" отображается
-    public boolean displayedCheckStatusButton() {
+    public boolean isDisplayedCheckStatusButton() {
         return driver.findElement(checkStatusButton).isDisplayed();
     }
 }
